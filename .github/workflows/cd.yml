@@ -1,0 +1,36 @@
+name: cd
+
+on:
+  release:
+    types: [published]
+jobs:
+  build-mac:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - run: npm i --production
+      - run: npm i electron-builder -g
+      - run: npm run build:mac -- --publish always
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      - name: upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: freee勤怠くん.dmg
+          path: dist/freee勤怠くん-*.dmg
+  build-win:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - run: npm i --production
+      - run: npm i electron-builder -g
+      - run: npm run build:win -- --publish always
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      - name: upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: freee勤怠くん.exe
+          path: dist/freee勤怠くん*.exe

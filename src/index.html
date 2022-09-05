@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>kintai</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <div id="loading" class="overlay">
+      <p>freeeへログインしています...</p>
+      <p id="login-message"></p>
+    </div>
+    <div id="login" class="overlay">
+      <form class="login-form" id="login-form">
+        <label>
+          ユーザー名
+          <input name="login-user-name" id="login-user-name">
+        </label>
+        <label>
+          パスワード
+          <input name="login-password" id="login-password">
+        </label>
+        <input type="submit" value="保存する">
+      </form>
+    </div>
+    <header>
+      <img src="./popup-link-icon.svg" id="openFreeeOnBrowser" />
+      <span id="userName"></span>
+    </header>
+    <hr />
+    <div class="button-container">
+      <button id="checkIn">出勤</button>
+      <button id="breakStart">休憩開始</button>
+      <button id="breakFinish">休憩終了</button>
+      <button id="checkOut">退勤</button>
+    </div>
+    <br />
+    <div class="info">
+      <div class="row">
+        <p class="label">現在の状態</p>
+        <p id="status" class="value"></p>
+      </div>
+      <div class="row">
+        <p class="label">労働日数</p>
+        <p id="totalWorkingDates" class="value"></p>
+      </div>
+      <div class="row">
+        <p class="label">総勤務時間</p>
+        <p id="totalWorkingHours" class="value"></p>
+      </div>
+      <div class="row">
+        <p class="label">1日平均時間</p>
+        <p id="averageTime" class="value"></p>
+      </div>
+      <div class="row">
+        <p class="label">不足時間</p>
+        <p id="lackOfWorkingTime" class="value"></p>
+      </div>
+      <div class="row">
+        <p class="label">
+          <label for="addBreak">退勤時に休憩を追加</label>
+        </p>
+        <div class="value">
+          <input id="add-break" type="checkbox" />
+        </div>
+      </div>
+    </div>
+    <div class="toast" id="toast"></div>
+    <script src="renderer.js"></script>
+  </body>
+</html>

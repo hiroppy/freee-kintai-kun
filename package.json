@@ -1,0 +1,27 @@
+{
+  "name": "kintai",
+  "productName": "freee勤怠くん",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "build:mac": "electron-builder --mac --x64",
+    "build:win": "electron-builder --win --x64"
+  },
+  "author": "hiroppy <git@hiroppy.me> (https://hiroppy.me/)",
+  "license": "MIT",
+  "dependencies": {
+    "electron-store": "^8.1.0",
+    "menubar": "^9.2.1",
+    "puppeteer": "^17.0.0"
+  },
+  "devDependencies": {
+    "electron": "19.0.15"
+  },
+  "build": {
+    "asar": true,
+    "asarUnpack": "node_modules/puppeteer/.local-chromium/**/*"
+  }
+}
