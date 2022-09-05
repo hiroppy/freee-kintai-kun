@@ -4,6 +4,8 @@ freee の勤怠を簡単にするデスクトップアプリケーション。�
 
 ![](./media/screen.png)
 
+freeeeに無い点として、一ヶ月のトータルの出勤数と一日の平均時間(8時間以上であれば締日に残業が発生していること)を算出します。
+
 ## インストール
 
 [リリースページ](https://github.com/hiroppy/freee-kintai-kun/releases)から win/mac がダウンロードできます。
