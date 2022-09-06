@@ -45,7 +45,11 @@ function getCurrentStatusLabel(status) {
   }
 }
 
+let isLoadingButton = false;
+
 function disableAllButtons(isDisabled) {
+  isLoadingButton = !!isDisabled;
+
   Object.values(buttons).forEach((value) => {
     if (isDisabled) {
       value.setAttribute("disabled", isDisabled);
@@ -110,28 +114,36 @@ async function runAction(action, actionName, ...args) {
 }
 
 buttons.checkIn.addEventListener("click", async () => {
-  disableAllButtons(true);
-  await runAction("checkIn", "出勤");
-  disableAllButtons(false);
+  if (!isLoadingButton) {
+    disableAllButtons(true);
+    await runAction("checkIn", "出勤");
+    disableAllButtons(false);
+  }
 });
 buttons.checkOut.addEventListener("click", async () => {
-  disableAllButtons(true);
-  await runAction(
-    "checkOut",
-    "退勤",
-    document.querySelector("#add-break").checked
-  );
-  disableAllButtons(false);
+  if (!isLoadingButton) {
+    disableAllButtons(true);
+    await runAction(
+      "checkOut",
+      "退勤",
+      document.querySelector("#add-break").checked
+    );
+    disableAllButtons(false);
+  }
 });
 buttons.breakStart.addEventListener("click", async () => {
-  disableAllButtons(true);
-  await runAction("breakStart", "休憩の開始");
-  disableAllButtons(false);
+  if (!isLoadingButton) {
+    disableAllButtons(true);
+    await runAction("breakStart", "休憩の開始");
+    disableAllButtons(false);
+  }
 });
 buttons.breakFinish.addEventListener("click", async () => {
-  disableAllButtons(true);
-  await runAction("breakFinish", "休憩の終了");
-  disableAllButtons(false);
+  if (!isLoadingButton) {
+    disableAllButtons(true);
+    await runAction("breakFinish", "休憩の終了");
+    disableAllButtons(false);
+  }
 });
 
 loginForm.addEventListener("submit", async (e) => {

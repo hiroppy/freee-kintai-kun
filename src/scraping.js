@@ -189,7 +189,7 @@ async function getAllStatus(page) {
   ]);
 
   const status =
-    /* 一日が終了 */ !checkIn && !checkOut
+    /* 一日が終了 */ !checkIn && !checkOut && !breakStart && !breakFinish
       ? "afterWorking"
       : /* 一日が開始 */ checkIn && !checkOut
       ? "beforeWorking"
